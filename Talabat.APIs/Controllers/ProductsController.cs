@@ -72,6 +72,7 @@ namespace TalabatPractising.APIs.Controllers
             return Ok(MappedProduct);
         }
 
+
 		[CashedAttribute(600)]
 		[HttpGet("brands")] // Get: /api/products/brands
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetBrands()
