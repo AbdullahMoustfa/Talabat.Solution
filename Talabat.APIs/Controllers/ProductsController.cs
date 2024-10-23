@@ -38,8 +38,8 @@ namespace TalabatPractising.APIs.Controllers
             //_categoriesRepo = categoriesRepo;
         }
 
-
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [CashedAttribute(600)]
+       // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet]    //GET: /api/Products
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery] ProductSpecParams specParams)
         {
@@ -56,8 +56,8 @@ namespace TalabatPractising.APIs.Controllers
             return Ok(new Pagination<ProductToReturnDto>(specParams.PageIndex, specParams.PageSize, data, Count));
         }
 
-       
-        [ProducesResponseType(typeof(ProductToReturnDto), StatusCodes.Status200OK)]
+		[CashedAttribute(600)]
+		[ProducesResponseType(typeof(ProductToReturnDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]    // BaseUrl/api/Products/1
         public async Task<ActionResult<Product>> GetProduct(int id)
@@ -72,8 +72,8 @@ namespace TalabatPractising.APIs.Controllers
             return Ok(MappedProduct);
         }
 
-
-        [HttpGet("brands")] // Get: /api/products/brands
+		[CashedAttribute(600)]
+		[HttpGet("brands")] // Get: /api/products/brands
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetBrands()
         {
             var brands = await _unitOfWork.Repository<ProductBrand>().GetAllAsync();   
@@ -81,8 +81,8 @@ namespace TalabatPractising.APIs.Controllers
             return Ok(brands);
         }
 
-
-        [HttpGet("categories")]  // Get: /api/products/categories
+		[CashedAttribute(600)]
+		[HttpGet("categories")]  // Get: /api/products/categories
         public async Task<ActionResult<IReadOnlyList<ProductCategory>>> GetCategories()
         {
             var categories = await _unitOfWork.Repository<ProductCategory>().GetAllAsync();
