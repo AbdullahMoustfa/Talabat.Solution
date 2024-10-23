@@ -11,11 +11,13 @@ using Talabat.Core.Repositories.Contract;
 using Talabat.Core.Services.Contract.AuthService;
 using Talabat.Core.Services.Contract.IOrderService;
 using Talabat.Core.Services.Contract.IPaymentService;
+using Talabat.Core.Services.Contract.IResponseCacheService;
 using Talabat.Repository;
 using Talabat.Repository.Generic_Repository;
 using Talabat.Service.AuthService;
 using Talabat.Service.OrderService;
 using Talabat.Service.PaymentService;
+using Talabat.Service.ResponseCacheService;
 
 
 namespace Talabat.APIs.Extensions
@@ -24,6 +26,7 @@ namespace Talabat.APIs.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddSingleton(typeof(IResponseCacheService), typeof(ResponseCacheService)); 
             services.AddScoped(typeof(IPaymentService), typeof(PaymentService));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddScoped(typeof(IOrderService), typeof(OrderService));

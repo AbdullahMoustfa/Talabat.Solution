@@ -8,7 +8,7 @@ using Talabat.Core.Entities.Oreder_Aggragate;
 
 namespace Talabat.Core.Services.Contract.IPaymentService
 {
-    public interface IPaymentService
+    public interface IPaymentService 
     {
         // Fun To Create Or Update Payment Intent
         Task<CustomerBasket?> CreateOrUpdatePaymentIntent(string BasketId);
