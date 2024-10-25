@@ -10,12 +10,6 @@ Developed with **ASP.NET Core Web API**, this project provides a foundation for 
 ### Table of Contents
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-- [Installation](#installation)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
-
 ---
 
 ### Features
